@@ -20,6 +20,7 @@ class ViewController: UIViewController {
         view.backgroundColor = .white
         mainWeatherView.collectionView.dataSource = self
         mainWeatherView.collectionView.delegate = self
+        mainWeatherView.collectionView.register(UINib(nibName: "ForecastCell", bundle: nil), forCellWithReuseIdentifier: "forecastCell")
     }
     
     override func loadView() {
@@ -34,7 +35,9 @@ extension ViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
+        let cell = mainWeatherView.collectionView.dequeueReusableCell(withReuseIdentifier: "forecastCell", for: indexPath)
+        let forecast = forecasts[indexPath.row]
+        return cell
     }
     
     

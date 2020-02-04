@@ -27,8 +27,8 @@ class MainWeatherView: UIView {
     
     public lazy var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
-        layout.scrollDirection = .vertical
-        layout.itemSize = CGSize(width: 400, height: 400)
+        layout.scrollDirection = .horizontal
+        layout.itemSize = CGSize(width: 155, height: 275)
         let cv = UICollectionView(frame: CGRect.zero, collectionViewLayout: layout)
         cv.backgroundColor = .systemTeal
         return cv
