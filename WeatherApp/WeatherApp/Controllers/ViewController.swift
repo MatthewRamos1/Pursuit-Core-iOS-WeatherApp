@@ -18,7 +18,7 @@ class ViewController: UIViewController {
             }
         }
     }
-    private var test = "11423"
+    private var defaultZip = "11423"
     override func loadView() {
         view = mainWeatherView
     }
@@ -27,7 +27,9 @@ class ViewController: UIViewController {
         navigationItem.title = "Search"
         view.backgroundColor = .white
         mainWeatherView.collectionView.dataSource = self
-        getForecasts(zipcode: test)
+        mainWeatherView.collectionView.delegate = self
+        mainWeatherView.textField.delegate = self
+        getForecasts(zipcode: defaultZip)
         
         mainWeatherView.collectionView.register(UINib(nibName: "ForecastCell", bundle: nil), forCellWithReuseIdentifier: "forecastCell")
     }
@@ -42,28 +44,31 @@ class ViewController: UIViewController {
                 DispatchQueue.main.async {
                     self?.showAlert(title: "Error", message: "Couldn't get location from zip: \(fetchingError)")
                 }
-                return
             case .success(let coordinatesRaw):
-                let lat = String(coordinatesRaw.0)
-                let long = String(coordinatesRaw.1)
-                coordinates = "\(lat),\(long)"
-            }
-        }
-        
-        ForecastAPIClient.fetchForecasts(coordinates: coordinates) { [weak self] (result) in
-            switch result {
-            case .failure(let appError):
-                DispatchQueue.main.async {
-                    self?.showAlert(title: "Error", message: "Couldn't get Forecast data: \(appError)")
-                }
-            case .success(let forecastData):
-                DispatchQueue.main.async {
-                    self?.mainWeatherView.cityNameLabel.text = forecastData.timezone
-                }
-                let forecasts = forecastData.daily.data
-                self?.forecasts = forecasts
                 
+                coordinates = "\(coordinatesRaw.lat),\(coordinatesRaw.long)"
+                print(coordinates)
+                
+                ForecastAPIClient.fetchForecasts(coordinates: coordinates) { [weak self] (result) in
+                    switch result {
+                    case .failure(let appError):
+                        DispatchQueue.main.async {
+                            self?.showAlert(title: "Error", message: "Couldn't get Forecast data: \(appError)")
+                        }
+                    case .success(let forecastData):
+                        DispatchQueue.main.async {
+                            self?.mainWeatherView.cityNameLabel.text = forecastData.timezone
+                            
+                        }
+                        let forecasts = forecastData.daily.data
+                        self?.forecasts = forecasts
+                        
+                    }
+                    
+                }
             }
+            
+            
             
         }
     }
@@ -83,6 +88,20 @@ extension ViewController: UICollectionViewDataSource {
         cell.configureCell(forecast: forecast)
         return cell
     }
-    
-    
+}
+
+extension ViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let forecast = forecasts[indexPath.row]
+        navigationController?.pushViewController(WeatherDetailController(), animated: true)
+    }
+}
+
+extension ViewController: UITextFieldDelegate {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let query = textField.text {
+        getForecasts(zipcode: query)
+        }
+        return true
+    }
 }

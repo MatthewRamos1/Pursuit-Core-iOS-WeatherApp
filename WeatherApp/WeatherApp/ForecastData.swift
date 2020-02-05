@@ -20,4 +20,6 @@ struct Daily: Codable {
 struct Forecast: Codable {
     let temperatureHigh: Double
     let temperatureLow: Double
+    let time: Int
+    let icon: String
 }
