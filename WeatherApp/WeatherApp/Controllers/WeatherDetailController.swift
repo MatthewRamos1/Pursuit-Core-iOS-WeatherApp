@@ -10,6 +10,12 @@ import UIKit
 
 class WeatherDetailController: UIViewController {
 
+    @IBOutlet weak var weatherImageView: UIImageView!
+    @IBOutlet weak var cityDateLabel: UILabel!
+    @IBOutlet weak var weatherStatusLabel: UILabel!
+    
+    var forecast: Forecast?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 

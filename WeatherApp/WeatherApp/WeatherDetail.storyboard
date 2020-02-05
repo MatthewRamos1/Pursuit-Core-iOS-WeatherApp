@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Forecast-->
+        <scene sceneID="Srh-FJ-oe8">
+            <objects>
+                <viewController storyboardIdentifier="WeatherDetailController" id="lfk-dF-JKG" customClass="WeatherDetailController" customModule="WeatherApp" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="DwR-De-VSo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="JnW-h2-o1l">
+                                <rect key="frame" x="0.0" y="204" width="414" height="358.5"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weather Status" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iqm-oj-Xg0">
+                                <rect key="frame" x="20" y="582.5" width="374" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="City, Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="O4r-hO-47L">
+                                <rect key="frame" x="20" y="104" width="374" height="27"/>
+                                <fontDescription key="fontDescription" type="boldSystem" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="JnW-h2-o1l" firstAttribute="trailing" secondItem="dQe-2S-Uoh" secondAttribute="trailing" id="1Cb-Y1-RXQ"/>
+                            <constraint firstItem="JnW-h2-o1l" firstAttribute="height" secondItem="DwR-De-VSo" secondAttribute="height" multiplier="0.4" id="Dyd-BB-h2q"/>
+                            <constraint firstItem="JnW-h2-o1l" firstAttribute="top" secondItem="dQe-2S-Uoh" secondAttribute="top" constant="160" id="EcU-wl-Ive"/>
+                            <constraint firstItem="O4r-hO-47L" firstAttribute="top" secondItem="dQe-2S-Uoh" secondAttribute="top" constant="60" id="Xc2-li-L34"/>
+                            <constraint firstItem="JnW-h2-o1l" firstAttribute="leading" secondItem="dQe-2S-Uoh" secondAttribute="leading" id="ZTt-rw-8v9"/>
+                            <constraint firstItem="dQe-2S-Uoh" firstAttribute="trailing" secondItem="iqm-oj-Xg0" secondAttribute="trailing" constant="20" id="bUh-wv-2bb"/>
+                            <constraint firstItem="O4r-hO-47L" firstAttribute="leading" secondItem="dQe-2S-Uoh" secondAttribute="leading" constant="20" id="q0N-AZ-pNz"/>
+                            <constraint firstItem="iqm-oj-Xg0" firstAttribute="top" secondItem="JnW-h2-o1l" secondAttribute="bottom" constant="20" id="sy4-bo-dAa"/>
+                            <constraint firstItem="iqm-oj-Xg0" firstAttribute="leading" secondItem="dQe-2S-Uoh" secondAttribute="leading" constant="20" id="v0t-xC-G89"/>
+                            <constraint firstItem="dQe-2S-Uoh" firstAttribute="trailing" secondItem="O4r-hO-47L" secondAttribute="trailing" constant="20" id="zxq-hl-zos"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="dQe-2S-Uoh"/>
+                    </view>
+                    <navigationItem key="navigationItem" title="Forecast" id="ztL-u3-NA7"/>
+                    <connections>
+                        <outlet property="cityDateLabel" destination="O4r-hO-47L" id="n42-l3-d3F"/>
+                        <outlet property="weatherImageView" destination="JnW-h2-o1l" id="JJC-NV-YXg"/>
+                        <outlet property="weatherStatusLabel" destination="iqm-oj-Xg0" id="mDq-O1-8Kf"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="4ZB-Hd-b8n" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="957.97101449275374" y="73.660714285714278"/>
+        </scene>
+    </scenes>
+</document>

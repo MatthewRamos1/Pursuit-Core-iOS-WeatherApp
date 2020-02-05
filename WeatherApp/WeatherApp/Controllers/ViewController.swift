@@ -93,7 +93,12 @@ extension ViewController: UICollectionViewDataSource {
 extension ViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let forecast = forecasts[indexPath.row]
-        navigationController?.pushViewController(WeatherDetailController(), animated: true)
+        let weatherDetailStoryboard = UIStoryboard(name: "WeatherDetail", bundle: nil)
+        guard let weatherDetailController = weatherDetailStoryboard.instantiateViewController(identifier: "WeatherDetailController") as? WeatherDetailController else {
+            fatalError("Check didselectitem, couldn't downcast")
+        }
+        weatherDetailController.forecast = forecast
+        navigationController?.pushViewController(weatherDetailController, animated: true)
     }
 }
 
