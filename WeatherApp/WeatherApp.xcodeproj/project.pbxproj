@@ -3,13 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0C4EC12323EA132C00AC54A6 /* UIViewController + Alerts.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C4EC12223EA132C00AC54A6 /* UIViewController + Alerts.swift */; };
 		0C51D17E23E9FD6A00AB3765 /* ForecastData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C51D17D23E9FD6A00AB3765 /* ForecastData.swift */; };
 		0C51D18523EA03CC00AB3765 /* ForecastCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0C51D18423EA03CC00AB3765 /* ForecastCell.xib */; };
 		0C51D18723EA085300AB3765 /* ForecastCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C51D18623EA085300AB3765 /* ForecastCell.swift */; };
+		0C51D18A23EA0D5E00AB3765 /* ImageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 0C51D18923EA0D5E00AB3765 /* ImageKit */; };
+		0C51D18C23EA0DBB00AB3765 /* ForecastAPIClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C51D18B23EA0DBB00AB3765 /* ForecastAPIClient.swift */; };
 		0C5400C223E4C61900294148 /* MainWeatherView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0C5400C123E4C61900294148 /* MainWeatherView.swift */; };
 		548CE052234D33B500B5177D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548CE051234D33B500B5177D /* AppDelegate.swift */; };
 		548CE054234D33B500B5177D /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 548CE053234D33B500B5177D /* SceneDelegate.swift */; };
@@ -20,9 +23,11 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		0C4EC12223EA132C00AC54A6 /* UIViewController + Alerts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController + Alerts.swift"; sourceTree = "<group>"; };
 		0C51D17D23E9FD6A00AB3765 /* ForecastData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastData.swift; sourceTree = "<group>"; };
 		0C51D18423EA03CC00AB3765 /* ForecastCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ForecastCell.xib; sourceTree = "<group>"; };
 		0C51D18623EA085300AB3765 /* ForecastCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastCell.swift; sourceTree = "<group>"; };
+		0C51D18B23EA0DBB00AB3765 /* ForecastAPIClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForecastAPIClient.swift; sourceTree = "<group>"; };
 		0C5400C123E4C61900294148 /* MainWeatherView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainWeatherView.swift; sourceTree = "<group>"; };
 		548CE04E234D33B500B5177D /* WeatherApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = WeatherApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		548CE051234D33B500B5177D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -39,12 +44,21 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0C51D18A23EA0D5E00AB3765 /* ImageKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		0C4EC12423EA135100AC54A6 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0C4EC12223EA132C00AC54A6 /* UIViewController + Alerts.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		0C51D17F23E9FD7400AB3765 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
@@ -72,9 +86,11 @@
 		548CE050234D33B500B5177D /* WeatherApp */ = {
 			isa = PBXGroup;
 			children = (
+				0C4EC12423EA135100AC54A6 /* Extensions */,
 				0C51D17F23E9FD7400AB3765 /* Controllers */,
 				548CE051234D33B500B5177D /* AppDelegate.swift */,
 				548CE053234D33B500B5177D /* SceneDelegate.swift */,
+				0C51D18B23EA0DBB00AB3765 /* ForecastAPIClient.swift */,
 				548CE065234D33E600B5177D /* ZipCodeHelper.swift */,
 				0C51D17D23E9FD6A00AB3765 /* ForecastData.swift */,
 				0C5400C123E4C61900294148 /* MainWeatherView.swift */,
@@ -103,6 +119,9 @@
 			dependencies = (
 			);
 			name = WeatherApp;
+			packageProductDependencies = (
+				0C51D18923EA0D5E00AB3765 /* ImageKit */,
+			);
 			productName = WeatherApp;
 			productReference = 548CE04E234D33B500B5177D /* WeatherApp.app */;
 			productType = "com.apple.product-type.application";
@@ -131,6 +150,9 @@
 				Base,
 			);
 			mainGroup = 548CE045234D33B500B5177D;
+			packageReferences = (
+				0C51D18823EA0D5E00AB3765 /* XCRemoteSwiftPackageReference "ImageKit" */,
+			);
 			productRefGroup = 548CE04F234D33B500B5177D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -160,11 +182,13 @@
 			files = (
 				548CE066234D33E600B5177D /* ZipCodeHelper.swift in Sources */,
 				548CE056234D33B500B5177D /* ViewController.swift in Sources */,
+				0C51D18C23EA0DBB00AB3765 /* ForecastAPIClient.swift in Sources */,
 				548CE052234D33B500B5177D /* AppDelegate.swift in Sources */,
 				0C5400C223E4C61900294148 /* MainWeatherView.swift in Sources */,
 				0C51D18723EA085300AB3765 /* ForecastCell.swift in Sources */,
 				0C51D17E23E9FD6A00AB3765 /* ForecastData.swift in Sources */,
 				548CE054234D33B500B5177D /* SceneDelegate.swift in Sources */,
+				0C4EC12323EA132C00AC54A6 /* UIViewController + Alerts.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -352,6 +376,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		0C51D18823EA0D5E00AB3765 /* XCRemoteSwiftPackageReference "ImageKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/alexpaul/ImageKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		0C51D18923EA0D5E00AB3765 /* ImageKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 0C51D18823EA0D5E00AB3765 /* XCRemoteSwiftPackageReference "ImageKit" */;
+			productName = ImageKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 548CE046234D33B500B5177D /* Project object */;
 }

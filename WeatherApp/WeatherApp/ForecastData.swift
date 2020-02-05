@@ -8,6 +8,16 @@
 
 import Foundation
 
-struct Forecast {
-    
+struct ForecastData: Codable {
+    let daily: Daily
+    let timezone: String
+}
+
+struct Daily: Codable {
+    let data: [Forecast]
+}
+
+struct Forecast: Codable {
+    let temperatureHigh: Double
+    let temperatureLow: Double
 }
