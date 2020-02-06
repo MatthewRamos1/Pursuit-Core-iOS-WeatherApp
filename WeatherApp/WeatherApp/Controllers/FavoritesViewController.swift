@@ -15,10 +15,29 @@ class FavoritesViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .systemTeal
+        favoritesView.collectionView.delegate = self
     }
     
     override func loadView() {
         view = favoritesView
     }
+    
+    
 
+}
+
+//extension FavoritesViewController: UICollectionViewDataSource {
+//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+//        1
+//    }
+//
+//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+//
+//    }
+//
+//
+//}
+
+extension FavoritesViewController: UICollectionViewDelegate {
+    
 }

@@ -7,6 +7,10 @@
 //
 
 import UIKit
+import AVFoundation
+import DataPersistence
+
+let dataPersistence = DataPersistence<Data>(filename: "images.plist")
 
 class WeatherDetailController: UIViewController {
 
@@ -28,5 +32,8 @@ class WeatherDetailController: UIViewController {
         }
         cityDateLabel.text = String(detailForecast.time)
         weatherStatusLabel.text = detailForecast.summary
+    }
+    
+    @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
     }
 }
