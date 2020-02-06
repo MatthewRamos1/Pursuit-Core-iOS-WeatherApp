@@ -10,19 +10,21 @@ import UIKit
 
 class WeatherTabController: UITabBarController {
     
-//    private lazy var navController: UINavigationController = {
-//        let navController = UINavigationController()
-//
-//        return navController
-//    }()
-    private lazy var viewController: UIViewController = {
-        let vc = ViewController()
+    private lazy var navController: UINavigationController = {
+        let navController = UINavigationController(rootViewController: ViewController())
+        navController.tabBarItem = UITabBarItem(title: "Search", image: UIImage(systemName: "magnifyingglass"), tag: 0)
+        return navController
+    }()
+    
+    private lazy var favoritesViewController: UIViewController = {
+        let vc = FavoritesViewController()
+        vc.tabBarItem = UITabBarItem(title: "Favorites", image: UIImage(systemName: "star.fill"), tag: 1)
         return vc
     }()
     
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        viewControllers = [UINavigationController(rootViewController: viewController)]
+        viewControllers = [navController, favoritesViewController]
     }
 }

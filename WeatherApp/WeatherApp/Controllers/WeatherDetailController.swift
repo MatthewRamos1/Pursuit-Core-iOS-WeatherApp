@@ -18,6 +18,15 @@ class WeatherDetailController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        updateUI()
 
+    }
+    
+    func updateUI() {
+        guard let detailForecast = forecast else {
+            fatalError("Couldn't access forecast")
+        }
+        cityDateLabel.text = String(detailForecast.time)
+        weatherStatusLabel.text = detailForecast.summary
     }
 }
