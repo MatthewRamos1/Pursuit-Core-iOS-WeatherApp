@@ -8,6 +8,7 @@
 
 import UIKit
 
+
 class ViewController: UIViewController {
     
     private let mainWeatherView = MainWeatherView()
@@ -32,6 +33,7 @@ class ViewController: UIViewController {
         getForecasts(zipcode: defaultZip)
         
         mainWeatherView.collectionView.register(UINib(nibName: "ForecastCell", bundle: nil), forCellWithReuseIdentifier: "forecastCell")
+        
     }
     
     
