@@ -10,7 +10,9 @@ import UIKit
 
 class FavoritesViewController: UIViewController {
     
-    let favoritesView  = FavoritesView()
+    private let favoritesView  = FavoritesView()
+    
+    private var favorites = [ImageObject]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,17 +28,19 @@ class FavoritesViewController: UIViewController {
 
 }
 
-//extension FavoritesViewController: UICollectionViewDataSource {
-//    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-//        1
-//    }
-//
-//    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-//
-//    }
-//
-//
-//}
+extension FavoritesViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        favorites.count
+    }
+
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = favoritesView.collectionView.dequeueReusableCell(withReuseIdentifier: "favoritesCell", for: indexPath)
+        return cell
+
+    }
+
+
+}
 
 extension FavoritesViewController: UICollectionViewDelegate {
     
