@@ -12,4 +12,7 @@ class FavoritesCell: UICollectionViewCell {
     
     @IBOutlet weak var favoritesImageView: UIImageView!
     
+    func configureCell(imageObject: ImageObject) {
+        favoritesImageView.image = UIImage(data: imageObject.imageData)
+    }
 }
