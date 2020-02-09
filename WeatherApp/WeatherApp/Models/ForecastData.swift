@@ -11,6 +11,14 @@ import Foundation
 struct ForecastData: Codable {
     let daily: Daily
     let timezone: String
+    
+    func returnCity() -> String {
+        let seperateStrings = timezone.components(separatedBy: "/")
+        guard let cityName = seperateStrings.last else {
+            return timezone
+        }
+        return cityName
+    }
 }
 
 struct Daily: Codable {

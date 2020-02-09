@@ -70,6 +70,14 @@ class WeatherDetailController: UIViewController {
         }
     }
     
+    func returnCity(string: String) -> String {
+        let seperateStrings = string.components(separatedBy: "/")
+        guard let cityName = seperateStrings.last else {
+            return string
+        }
+        return cityName
+    }
+    
     func createImageObject(image: UIImage) -> ImageObject? {
         guard let image = selectedImage else {
             return nil

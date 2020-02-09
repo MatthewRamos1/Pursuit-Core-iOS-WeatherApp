@@ -49,7 +49,6 @@ class ViewController: UIViewController {
             case .success(let coordinatesRaw):
                 
                 coordinates = "\(coordinatesRaw.lat),\(coordinatesRaw.long)"
-                print(coordinates)
                 
                 ForecastAPIClient.fetchForecasts(coordinates: coordinates) { [weak self] (result) in
                     switch result {
@@ -59,7 +58,7 @@ class ViewController: UIViewController {
                         }
                     case .success(let forecastData):
                         DispatchQueue.main.async {
-                            self?.mainWeatherView.cityNameLabel.text = forecastData.timezone
+                            self?.mainWeatherView.cityNameLabel.text = forecastData.returnCity()
                             
                         }
                         let forecasts = forecastData.daily.data
