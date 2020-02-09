@@ -54,9 +54,8 @@ class WeatherDetailController: UIViewController {
         guard let detailForecast = forecast else {
             fatalError("Couldn't access forecast")
         }
-        cityDateLabel.text = String(detailForecast.time)
+        cityDateLabel.text = detailForecast.unixToDate()
         weatherStatusLabel.text = detailForecast.summary
-        print(cityName)
         ForecastAPIClient.fetchPictures(query: cityName) { [weak self] (result) in
             switch result {
             case .failure(let appError):
@@ -90,7 +89,6 @@ class WeatherDetailController: UIViewController {
             return nil
         }
         let imageObject = ImageObject(imageData: resizedImageData, date: Date())
-        print(imageObject)
         return imageObject
     }
     

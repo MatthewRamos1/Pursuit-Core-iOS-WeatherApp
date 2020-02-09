@@ -16,7 +16,7 @@ class ForecastCell: UICollectionViewCell {
     @IBOutlet weak var lowTempLabel: UILabel!
     
     func configureCell(forecast: Forecast) {
-        dateLabel.text = String(forecast.time)
+        dateLabel.text = forecast.unixToDate()
         highTempLabel.text = String(forecast.temperatureHigh)
         lowTempLabel.text = String(forecast.temperatureLow)
         forecastImageView.image = UIImage(named: forecast.icon)

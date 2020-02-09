@@ -31,4 +31,14 @@ struct Forecast: Codable {
     let time: Int
     let icon: String
     let summary: String
+    
+    func unixToDate() -> String {
+        let date = Date(timeIntervalSince1970: TimeInterval(time))
+        let dateFormatter = DateFormatter()
+        dateFormatter.timeStyle = DateFormatter.Style.medium
+        dateFormatter.dateStyle = DateFormatter.Style.medium
+        dateFormatter.timeZone = .current
+        let localDate = dateFormatter.string(from: date)
+        return localDate
+    }
 }
