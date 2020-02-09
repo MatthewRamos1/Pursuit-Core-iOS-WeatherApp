@@ -14,7 +14,11 @@ class FavoritesViewController: UIViewController {
     private let favoritesView  = FavoritesView()
     private let dataPeristence = DataPersistence<ImageObject>(filename: "images.plist")
     
-    private var favorites = [ImageObject]()
+    private var favorites = [ImageObject]() {
+        didSet {
+            favoritesView.collectionView.reloadData()
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,6 +26,10 @@ class FavoritesViewController: UIViewController {
         favoritesView.collectionView.delegate = self
         favoritesView.collectionView.dataSource = self
         favoritesView.collectionView.register(UINib(nibName: "FavoritesCell", bundle: nil), forCellWithReuseIdentifier: "favoritesCell")
+        loadImageObjects()
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
         loadImageObjects()
     }
     

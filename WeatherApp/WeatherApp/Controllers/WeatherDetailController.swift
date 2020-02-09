@@ -19,8 +19,8 @@ class WeatherDetailController: UIViewController {
     @IBOutlet weak var cityDateLabel: UILabel!
     @IBOutlet weak var weatherStatusLabel: UILabel!
     
-    let test = "new"
     var forecast: Forecast?
+    var cityName = "city"
     private var selectedImage: UIImage?
     var pictures = [Picture]() {
         didSet {
@@ -56,7 +56,8 @@ class WeatherDetailController: UIViewController {
         }
         cityDateLabel.text = String(detailForecast.time)
         weatherStatusLabel.text = detailForecast.summary
-        ForecastAPIClient.fetchPictures(query: test) { [weak self] (result) in
+        print(cityName)
+        ForecastAPIClient.fetchPictures(query: cityName) { [weak self] (result) in
             switch result {
             case .failure(let appError):
                 DispatchQueue.main.async {

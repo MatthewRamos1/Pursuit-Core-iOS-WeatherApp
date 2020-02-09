@@ -99,6 +99,7 @@ extension ViewController: UICollectionViewDelegate {
             fatalError("Check didselectitem, couldn't downcast")
         }
         weatherDetailController.forecast = forecast
+        weatherDetailController.cityName = mainWeatherView.cityNameLabel.text ?? "city"
         navigationController?.pushViewController(weatherDetailController, animated: true)
     }
 }
